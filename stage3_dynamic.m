@@ -2,9 +2,12 @@ clc;
 clear;
 close all;
 
-node = ros2node('MATLAB');
-velocityPub = ros2publisher(node, "/position", "geometry_msgs/Point");
-msg = ros2message(velocityPub);
+%% Creating a ROS 2 node 
+ node = ros2node('MATLAB'); %creates a ROS 2 node named 'MATLAB'. It establishes a connection between MATLAB and ROS.
+ velocityPub = ros2publisher(node, "/position", "geometry_msgs/Point"); %Creating a publisher object named velocityPub that publishes messages of type "geometry_msgs/Point" to the topic "/position". It allows MATLAB to publish position information to other ROS nodes.
+ msg = ros2message(velocityPub); % Creating a message object msg of the same type as the publisher. It will be used to store and send position information.
+%%
+
 
 nRbt = 2;
 nOrient = 2;
@@ -296,14 +299,10 @@ end
 
 k_ = 1;
 
-% 
-%% Main source
-% 
-%Cost
 hold on
 
-%% DYnamics
- map = robotics.OccupancyGrid(bound,bound,20);
+%% DYnamic Obstacles
+ map = robotics.OccupancyGrid(bound,bound,20); % Creating an occupancy grid map
     for i=1:nIter
         
 if(i==1)
