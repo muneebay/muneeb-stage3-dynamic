@@ -368,9 +368,9 @@ inflate(map,1)
 
 for jj=1:1:180 % It controls the vertical placement of the obstacles
     pp=1+(jj-1)*180; It determines the starting index for the inner loop based on the current value of jj.
-for kk=pp:1:pp+180
-    k__(kk,1)= 13.7-0.1*i+(kk-(jj-1)*180-1)*0.01; %x-axis obstacle
-k__(kk,2)=13.7+0.01*(jj-1);% y-axis obstacle
+for kk=pp:1:pp+180 %defining the entries of the matrix
+    k__(kk,1)= 13.7-0.1*i+(kk-(jj-1)*180-1)*0.01; %keep obstacle constant in x-axis
+k__(kk,2)=13.7+0.01*(jj-1);%changing value of obstacle in y-axis
 
 l__(kk,1)= 6+(kk-(jj-1)*180-1)*0.01;
 l__(kk,2)=13.7-0.1*i+0.01*(jj-1);
